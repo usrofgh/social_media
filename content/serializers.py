@@ -5,11 +5,11 @@ from content.models import Post, Tag, Comment
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    post_id = serializers.IntegerField(write_only=True)
 
     class Meta:
         model = Comment
-        fields = ("id", "post_id", "created_at", "text")
+        fields = ("id", "post_id", "created_at", "author", "text")
+        read_only_fields = ("id", "created_at", "author")
 
 
 class TagSerializer(serializers.ModelSerializer):

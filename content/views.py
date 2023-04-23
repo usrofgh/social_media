@@ -1,3 +1,4 @@
+from rest_framework import status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action
 from rest_framework.pagination import PageNumberPagination
@@ -9,7 +10,7 @@ from content.models import Post
 from content.serializers import (
     PostSerializer,
     PostListSerializer,
-    PostDetailSerializer,
+    PostDetailSerializer, CommentSerializer,
 )
 from user.permissions import IsAuthorOrReadOnly
 
@@ -46,6 +47,8 @@ class PostViewSet(ModelViewSet):
             return PostListSerializer
         if self.action == "retrieve":
             return PostDetailSerializer
+        if self.action == "leave_comment":
+            return CommentSerializer
 
         return self.serializer_class
 
@@ -87,3 +90,17 @@ class PostViewSet(ModelViewSet):
 
         post.dislikes.add(me)
         return Response({"status": "dislike"})
+
+    @action(
+        methods=["POST"],
+        detail=True,
+        permission_classes=[IsAuthenticated]
+    )
+    def leave_comment(self, request, pk=None):
+        post = self.get_object()
+        serializer = CommentSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(post=post, author=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

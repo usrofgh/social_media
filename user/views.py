@@ -12,8 +12,13 @@ from rest_framework.settings import api_settings
 from rest_framework.viewsets import GenericViewSet
 
 from content.views import Pagination
-from user.serializers import UserCreateSerializer, UserDetailSerializer, UserSerializer, AuthTokenSerializer, \
+from user.serializers import (
+    UserCreateSerializer,
+    UserDetailSerializer,
+    UserSerializer,
+    AuthTokenSerializer,
     UserListSerializer
+)
 
 
 class CreateUserView(CreateAPIView):
