@@ -62,6 +62,7 @@ class UserDetailSerializer(UserSerializer):
             "avatar",
             "followings", "followers",
             "followers_count", "followings_count",
+            "posts", "likes", "dislikes",
             "is_staff",)
 
 
