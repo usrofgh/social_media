@@ -65,6 +65,10 @@ class UserDetailSerializer(UserSerializer):
             "is_staff",)
 
 
+class ToggleFollowingSerializer(serializers.Serializer):
+    pass
+
+
 class AuthTokenSerializer(serializers.Serializer):
     email = serializers.CharField(label=_("Email"))
     password = serializers.CharField(
