@@ -14,7 +14,7 @@ from user.permissions import IsAuthorOrReadOnly
 
 
 class PostViewSet(ModelViewSet):
-    queryset = Post.objects.all()
+    queryset = Post.objects.prefetch_related("tags", "likes", "dislikes", "comments")
     serializer_class = PostSerializer
 
     authentication_classes = (TokenAuthentication,)
