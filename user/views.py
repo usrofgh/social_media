@@ -11,6 +11,7 @@ from rest_framework.response import Response
 from rest_framework.settings import api_settings
 from rest_framework.viewsets import GenericViewSet
 
+from content.views import Pagination
 from user.serializers import UserCreateSerializer, UserDetailSerializer, UserSerializer, AuthTokenSerializer, \
     UserListSerializer
 
@@ -21,6 +22,7 @@ class CreateUserView(CreateAPIView):
 
 class UserManageView(RetrieveUpdateAPIView):
     serializer_class = UserDetailSerializer
+    pagination_class = Pagination
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
 

@@ -1,5 +1,6 @@
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
@@ -13,9 +14,14 @@ from content.serializers import (
 from user.permissions import IsAuthorOrReadOnly
 
 
+class Pagination(PageNumberPagination):
+    page_size = 1
+
+
 class PostViewSet(ModelViewSet):
     queryset = Post.objects.prefetch_related("tags", "likes", "dislikes", "comments")
     serializer_class = PostSerializer
+    pagination_class = Pagination
 
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated, IsAuthorOrReadOnly)
