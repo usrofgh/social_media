@@ -9,5 +9,6 @@
 - CRUD for posts with tags
 - Filter posts by tags/author
 - Like/Dislike for posts
+- Comment posts
 
 ![img.png](img.png)
