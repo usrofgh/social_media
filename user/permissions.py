@@ -1,6 +1,6 @@
 from rest_framework.permissions import BasePermission
 
-from social_media_api.models import Post
+from content.models import Post
 
 
 class IsAuthorOrReadOnly(BasePermission):
