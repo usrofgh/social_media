@@ -9,7 +9,7 @@ class UserSerializer(ModelSerializer):
         model = get_user_model()
         fields = ("id", "email", "username",
                   "first_name", "last_name",
-                  "avatar", "is_staff", "password")
+                  "avatar", "bio", "is_staff", "password")
         read_only_fields = ("id", "is_staff")
         extra_kwargs = {
             "password": {
@@ -37,7 +37,7 @@ class UserCreateSerializer(UserSerializer):
         model = get_user_model()
         fields = ("id", "email", "username",
                   "first_name", "last_name",
-                  "avatar",
+                  "bio", "avatar",
                   "is_staff", "password")
         read_only_fields = ("id", "is_staff")
         extra_kwargs = {
@@ -59,7 +59,7 @@ class UserDetailSerializer(UserSerializer):
         fields = (
             "id", "email", "username",
             "first_name", "last_name",
-            "avatar",
+            "bio", "avatar",
             "followings", "followers",
             "followers_count", "followings_count",
             "posts", "likes", "dislikes",
