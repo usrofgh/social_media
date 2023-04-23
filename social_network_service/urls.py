@@ -23,4 +23,5 @@ from social_network_service import settings
 urlpatterns = [
     path("__debug__/", include("debug_toolbar.urls")),
     path("admin/", admin.site.urls),
+    path("api/", include("user.urls", namespace="profile")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
