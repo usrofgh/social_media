@@ -11,4 +11,27 @@
 - Like/Dislike for posts
 - Comment posts
 
-![img.png](img.png)
+
+## Local Run
+<hr>
+
+```shell
+git clone https://github.com/usrofgh/social_media.git
+cd social_media
+python -m venv venv
+
+(windows) -> venv\Scripts\activate
+(linux) -> source venv/bin/activate
+
+pip install -r requirements.txt
+python manage.py runserver
+```
+
+### Endpoints
+<hr>
+
+![endpoints.png](imgs%2Fendpoints.png)
+### Schema
+<hr>
+
+![schema.png](imgs%2Fschema.png)
