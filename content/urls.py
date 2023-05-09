@@ -4,7 +4,7 @@ from rest_framework import routers
 from content.views import PostViewSet
 
 router = routers.DefaultRouter()
-router.register("posts", PostViewSet)
+router.register("", PostViewSet)
 
 urlpatterns = [
     path("", include(router.urls))

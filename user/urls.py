@@ -4,7 +4,7 @@ from rest_framework import routers
 from user.views import CreateUserView, TokenCreateView, UserViewSet, UserManageView
 
 router = routers.DefaultRouter()
-router.register("users", UserViewSet)
+router.register("", UserViewSet)
 
 urlpatterns = [
     path("register/", CreateUserView.as_view(), name="create"),

@@ -31,7 +31,7 @@ urlpatterns = [
     ),
     path("admin/", admin.site.urls),
 
-    path("api/", include("user.urls", namespace="profile")),
-    path("api/", include("content.urls", namespace="post"))
+    path("api/users/", include("user.urls", namespace="profile")),
+    path("api/posts/", include("content.urls", namespace="post"))
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
