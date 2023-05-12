@@ -29,7 +29,9 @@ urlpatterns = [
         SpectacularSwaggerView.as_view(url_name="schema"),
         name="swagger-ui",
     ),
-
     path("admin/", admin.site.urls),
-    path("api/", include("user.urls", namespace="profile")),
+
+    path("api/users/", include("user.urls", namespace="profile")),
+    path("api/posts/", include("content.urls", namespace="post"))
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
